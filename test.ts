@@ -11,4 +11,4 @@ control.runInParallel(function() {
     music.playMelody(melody, 120)    
 })
 
-game.splash("play RTTL tunes", "in your games...")
+game.splash("play RTTTL tunes", "in your games...")
