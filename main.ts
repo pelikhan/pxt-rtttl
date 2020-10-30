@@ -1,7 +1,3 @@
-/**
- * Utilities to play RTTL tunes
- * with MakeCode Arcade
- */
 namespace music {
     function isSpace(s: string, i: number) {
         const c = s.charCodeAt(i)
