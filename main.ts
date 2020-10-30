@@ -32,11 +32,9 @@ namespace music {
             const onote = note.slice(0)
             // tirm spaces
             let i = 0;
-            for(; i < note.length 
-                && isSpace(note, i)
-                ; ++i) {}
+            for(; i < note.length && isSpace(note, i); ++i) {}
             note = note.slice(i)
-            // duration
+            // duration or default
             for(i = 0; i < note.length && isDigit(note, i); ++i) {}
             const d = i == 0 ? defaultd : parseInt(note.substr(0, i))
             note = note.slice(i)
@@ -57,7 +55,9 @@ namespace music {
                 : parseInt(note.substr(0, i))
             note = note.slice(i)
 
-            const duration = 32 >> d;
+            let duration = 32 >> d;
+            if (dot)
+                duration += duration >> 1;
             // parsed, render to convert
             const mk = `${thenote}${hassharp ? "#" : ""}${octave}:${duration}`
             return mk;
