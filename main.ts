@@ -2,10 +2,15 @@
  * Utilities to play RTTL tunes
  * with MakeCode Arcade
  */
-namespace rttl {
+namespace music {
     function isSpace(s: string, i: number) {
         const c = s.charCodeAt(i)
         return c == 32 || c == 10 || c == 13;
+    }
+
+    function isDigit(s: string, i: number) {
+        const c = s.charCodeAt(i)
+        return c >= 48 && c <= 57;
     }
 
     /**
@@ -14,17 +19,14 @@ namespace rttl {
      */
     //% block="convert RTTL $notes to melody"
     //% blockId=rttl_converttomelody
-    export function convertToMelody(notes: string): string {
+    //% group="Melody"
+    export function convertRTTLToMelody(notes: string): string {
         let defaultd = 1;
         let defaulto = 8;
         let defaultb = 120;
 
-        const zero = "0".charCodeAt(0)
-        const nine = "9".charCodeAt(0)
         const dotc = ".".charCodeAt(0)
         const sharp = "#".charCodeAt(0)
-        const space = " ".charCodeAt(0)
-        const newline = "\n".charCodeAt(0)
 
         const convertNote = (note: string): string => {
             const onote = note.slice(0)
@@ -35,10 +37,7 @@ namespace rttl {
                 ; ++i) {}
             note = note.slice(i)
             // duration
-            for(i = 0; i < note.length 
-                && note.charCodeAt(i) >= zero 
-                && note.charCodeAt(i) <= nine
-                ; ++i) {}
+            for(i = 0; i < note.length && isDigit(note, i); ++i) {}
             const d = i == 0 ? defaultd : parseInt(note.substr(0, i))
             note = note.slice(i)
             // note?
@@ -53,11 +52,7 @@ namespace rttl {
             if (dot)
                 note = note.slice(1);
             // octave
-            for(i = 0; i < note.length 
-                && note.charCodeAt(i) >= zero 
-                && note.charCodeAt(i) <= nine
-                && note.charCodeAt(i) != dotc
-                ; ++i) {}
+            for(i = 0; i < note.length && isDigit(note, i); ++i) {}
             const octave = i == 0 ? defaulto 
                 : parseInt(note.substr(0, i))
             note = note.slice(i)
@@ -91,7 +86,7 @@ const demo = `HauntHouse: d=4,o=5,b=108: 2a4, 2e, 2d#, 2b4, 2a4, 2c, 2d, 2a#4, 2
 console.log("rttl")
 console.log(demo)
 
-const melody = rttl.convertToMelody(demo)
+const melody = music.convertRTTLToMelody(demo)
 
 console.log("melody")
 console.log(melody)
