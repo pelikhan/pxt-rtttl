@@ -21,6 +21,8 @@ namespace music {
     //% blockId=rttl_converttomelody
     //% group="Melody"
     export function convertRTTLToMelody(notes: string): string {
+        if (!notes) return notes;
+
         let defaultd = 1;
         let defaulto = 8;
         let defaultb = 120;
@@ -75,20 +77,9 @@ namespace music {
                 }
             })
         const data = parts[2].split(',')
-        
+        // and convert all notes to new format
         const melody = data.map(note => convertNote(note))
             .join(" ");
-        return melody
+        return melody;
     }
 }
-
-const demo = `HauntHouse: d=4,o=5,b=108: 2a4, 2e, 2d#, 2b4, 2a4, 2c, 2d, 2a#4, 2e., e, 1f4, 1a4, 1d#, 2e., d, 2c., b4, 1a4, 1p, 2a4, 2e, 2d#, 2b4, 2a4, 2c, 2d, 2a#4, 2e., e, 1f4, 1a4, 1d#, 2e., d, 2c., b4, 1a4`
-console.log("rttl")
-console.log(demo)
-
-const melody = music.convertRTTLToMelody(demo)
-
-console.log("melody")
-console.log(melody)
-
-music.playMelody(melody, 120)
