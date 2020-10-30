@@ -14,13 +14,13 @@ namespace music {
     }
 
     /**
-     * Parses RTTL tunes into MakeCode melodies
+     * Parses RTTTL tunes into MakeCode melodies
      * https://en.wikipedia.org/wiki/Ring_Tone_Transfer_Language
      */
-    //% block="convert RTTL $notes to melody"
+    //% block="convert RTTTL $notes to melody"
     //% blockId=rttl_converttomelody
     //% group="Melody"
-    export function convertRTTLToMelody(notes: string): string {
+    export function convertRTTTLToMelody(notes: string): string {
         if (!notes) return notes;
 
         let defaultd = 1;
