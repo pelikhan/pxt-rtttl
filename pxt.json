@@ -12,12 +12,16 @@
     "testFiles": [
         "test.ts"
     ],
+    "testDependencies": {
+        "device": "*"
+    },
     "targetVersions": {
         "target": "1.2.9",
         "targetId": "arcade"
     },
     "supportedTargets": [
-        "arcade"
+        "arcade",
+        "microbit"
     ],
     "preferredEditor": "tsprj"
 }
