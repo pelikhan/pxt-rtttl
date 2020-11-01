@@ -1,8 +1,10 @@
-# RTTL player
+# RTTTL player
 
 > Open this page at [https://pelikhan.github.io/pxt-rtttl/](https://pelikhan.github.io/pxt-rtttl/)
 
-This MakeCode extension lets you convert RTTTL tunes into MakeCode Arcade
+[Ring Tone Text Transfer Language (RTTTL)](https://en.wikipedia.org/wiki/Ring_Tone_Transfer_Language) 
+was developed by Nokia[citation needed] to be used to transfer ringtones to cellphone 
+by Nokia. This MakeCode extension lets you convert RTTTL tunes into MakeCode
 melodies.
 
 You will find a new ``convert RTTTL to melody`` block under Music > Melody.
