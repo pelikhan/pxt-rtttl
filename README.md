@@ -2,7 +2,7 @@
 
 > Open this page at [https://pelikhan.github.io/pxt-rtttl/](https://pelikhan.github.io/pxt-rtttl/)
 
-This Arcade extension lets you convert RTTTL tunes into MakeCode Arcade
+This MakeCode extension lets you convert RTTTL tunes into MakeCode Arcade
 melodies.
 
 You will find a new ``convert RTTTL to melody`` block under Music > Melody.
@@ -17,7 +17,8 @@ music.playMelody(melody, 120)
 
 This repository can be added as an **extension** in MakeCode.
 
-* open [https://arcade.makecode.com/](https://arcade.makecode.com/)
+* open [https://arcade.makecode.com/](https://arcade.makecode.com/) or 
+[https://makecode.microbit.org/](https://makecode.microbit.org/)
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu
 * search for **https://github.com/pelikhan/pxt-rtttl** and import
