@@ -28,7 +28,7 @@ namespace music {
 
         const convertNote = (note: string): string => {
             const onote = note.slice(0)
-            // tirm spaces
+            // trim spaces
             let i = 0;
             for(; i < note.length && isSpace(note, i); ++i) {}
             note = note.slice(i)
@@ -36,7 +36,7 @@ namespace music {
             for(i = 0; i < note.length && isDigit(note, i); ++i) {}
             const d = i == 0 ? defaultd : parseInt(note.substr(0, i))
             note = note.slice(i)
-            // note?
+            // note
             const thenote = note.substr(0, 1)
             note = note.slice(1)
             // #?
@@ -47,13 +47,13 @@ namespace music {
             const dot = note.charCodeAt(0) == dotc;
             if (dot)
                 note = note.slice(1);
-            // octave
+            // octave?
             for(i = 0; i < note.length && isDigit(note, i); ++i) {}
             const octave = i == 0 ? defaulto 
                 : parseInt(note.substr(0, i))
             note = note.slice(i)
 
-            let duration = 32 >> d;
+            let duration = Math.floor(32 / d); // Could remove call to Math.floor() to keep remainder
             if (dot)
                 duration += duration >> 1;
             // parsed, render to convert
@@ -63,15 +63,34 @@ namespace music {
 
         const parts = notes.split(':')
         const name = parts[0];
+
         parts[1].split(',')
             .map(kvs => kvs.split('='))
             .forEach(kv => {
-                switch(kv[0]) {
+                switch(kv[0]) { // Should be switch(kv[0].trim())
                     case "d": defaultd = parseInt(kv[1]); break;
                     case "o": defaulto = parseInt(kv[1]); break;
                     case "b": defaultb = parseInt(kv[1]); break;
                 }
             })
+
+        // For some reason, in the code above, I couldn't change
+        //   switch(kv[0])
+        // to
+        //   switch(kv[0].trim())
+        // The compiler kept yelling at me. So, I refactored to this:
+        /*
+        const configs = parts[1].split(',')
+        for (const config of configs) {
+            const kvs = config.split('=')
+            switch (kvs[0].trim()) {
+                case "d": defaultd = parseInt(kvs[1]); break;
+                case "o": defaulto = parseInt(kvs[1]); break;
+                case "b": defaultb = parseInt(kvs[1]); break;
+            }
+        The compiler *still* hates the call to .trim(). No idea why.
+        */
+
         const data = parts[2].split(',')
         // and convert all notes to new format
         const melody = data.map(note => convertNote(note))

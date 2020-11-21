@@ -16,7 +16,7 @@
         "device": "*"
     },
     "targetVersions": {
-        "target": "1.2.9",
+        "target": "1.2.10",
         "targetId": "arcade"
     },
     "supportedTargets": [
