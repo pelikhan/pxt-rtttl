@@ -53,7 +53,7 @@ namespace music {
                 : parseInt(note.substr(0, i))
             note = note.slice(i)
 
-            let duration = Math.floor(32 / d);
+            let duration = Math.floor(32 / d); // Could remove call to Math.floor() to keep remainder
             if (dot)
                 duration += duration >> 1;
             // parsed, render to convert
@@ -67,7 +67,7 @@ namespace music {
         parts[1].split(',')
             .map(kvs => kvs.split('='))
             .forEach(kv => {
-                switch(kv[0]) { // Should be swtich(kv[0].trim())
+                switch(kv[0]) { // Should be switch(kv[0].trim())
                     case "d": defaultd = parseInt(kv[1]); break;
                     case "o": defaulto = parseInt(kv[1]); break;
                     case "b": defaultb = parseInt(kv[1]); break;
