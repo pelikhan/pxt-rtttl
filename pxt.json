@@ -1,6 +1,6 @@
 {
     "name": "pxt-rtttl",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "description": "Play RTTTL ringtons on MakeCode Arcade or MakeCode micro:bit",
     "dependencies": {
         "core": "*"
