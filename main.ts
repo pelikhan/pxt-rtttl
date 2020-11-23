@@ -13,11 +13,11 @@ namespace music {
      * Parses RTTTL tunes into MakeCode melodies
      * https://en.wikipedia.org/wiki/Ring_Tone_Transfer_Language
      */
-    //% block="convert RTTTL $notes to melody"
+    //% block="convert RTTTL $ringtone to melody"
     //% blockId=rttl_converttomelody
     //% group="Melody"
-    export function convertRTTTLToMelody(notes: string): string {
-        if (!notes) return notes;
+    export function convertRTTTLToMelody(ringtone: string): string {
+        if (!ringtone) return ringtone;
 
         let defaultd = 1;
         let defaulto = 8;
@@ -61,38 +61,32 @@ namespace music {
             return mk;
         }
 
-        const parts = notes.split(':')
+        // <name> <sep> [<defaults>] <sep> <note-command>+
+        const parts = ringtone.split(':')
         const name = parts[0];
+        const defaults = parts[1];
+        const notes = parts[2];
 
-        parts[1].split(',')
-            .map(kvs => kvs.split('='))
-            .forEach(kv => {
-                switch(kv[0]) { // Should be switch(kv[0].trim())
-                    case "d": defaultd = parseInt(kv[1]); break;
-                    case "o": defaulto = parseInt(kv[1]); break;
-                    case "b": defaultb = parseInt(kv[1]); break;
-                }
-            })
+        if (!name || !notes)
+            return undefined;
 
-        // For some reason, in the code above, I couldn't change
-        //   switch(kv[0])
-        // to
-        //   switch(kv[0].trim())
-        // The compiler kept yelling at me. So, I refactored to this:
-        /*
-        const configs = parts[1].split(',')
-        for (const config of configs) {
-            const kvs = config.split('=')
-            switch (kvs[0].trim()) {
-                case "d": defaultd = parseInt(kvs[1]); break;
-                case "o": defaulto = parseInt(kvs[1]); break;
-                case "b": defaultb = parseInt(kvs[1]); break;
-            }
-        The compiler *still* hates the call to .trim(). No idea why.
-        */
+        if (defaults) {
+            defaults.split(',')
+                .map(kvs => kvs.replace(' ', '').split('='))
+                .forEach(kv => {
+                    console.log([kv[0], kv[1]])
+                    switch(kv[0]) {
+                        case "d": defaultd = parseInt(kv[1]); break;
+                        case "o": defaulto = parseInt(kv[1]); break;
+                        case "b": defaultb = parseInt(kv[1]); break;
+                    }
+                })
+        }
 
-        const data = parts[2].split(',')
+        console.log([defaultd, defaulto, defaultb])
+
         // and convert all notes to new format
+        const data = notes.split(',')
         const melody = data.map(note => convertNote(note))
             .join(" ");
         return melody;
