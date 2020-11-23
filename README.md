@@ -17,7 +17,8 @@ music.playMelody(melody, 120)
 
 ## Forum!
 
-Discuss this extension in the MakeCode forums at https://forum.makecode.com/t/rtttl-tunes-extension/4193 .
+Discuss this extension in the MakeCode forums 
+at [https://forum.makecode.com/t/rtttl-tunes-extension/4193](https://forum.makecode.com/t/rtttl-tunes-extension/4193 ).
 
 ## Use as Extension
 
