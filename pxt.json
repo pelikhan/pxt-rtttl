@@ -1,7 +1,7 @@
 {
     "name": "pxt-rtttl",
     "version": "0.0.9",
-    "description": "",
+    "description": "Play RTTTL ringtons on MakeCode Arcade or MakeCode micro:bit",
     "dependencies": {
         "core": "*"
     },
@@ -21,7 +21,8 @@
     },
     "supportedTargets": [
         "arcade",
-        "microbit"
+        "microbit",
+        "maker"
     ],
     "preferredEditor": "tsprj"
 }
