@@ -17,7 +17,8 @@ namespace music {
     //% blockId=rttl_converttomelody
     //% group="Melody"
     export function convertRTTTLToMelody(ringtone: string): string {
-        if (!ringtone) return ringtone;
+        if (!ringtone) 
+            return ringtone;
 
         let defaultd = 1;
         let defaulto = 8;
@@ -82,8 +83,6 @@ namespace music {
                     }
                 })
         }
-
-        console.log([defaultd, defaulto, defaultb])
 
         // and convert all notes to new format
         const data = notes.split(',')
