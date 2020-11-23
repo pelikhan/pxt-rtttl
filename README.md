@@ -33,5 +33,5 @@ This repository can be added as an **extension** in MakeCode.
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
 
 ```package
-pxt-rtttl=github:pelikhan/pxt-rtttl
+pxt-rtttl=github:pelikhan/pxt-rtttl#master
 ```
