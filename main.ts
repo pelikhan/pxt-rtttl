@@ -75,7 +75,6 @@ namespace music {
             defaults.split(',')
                 .map(kvs => kvs.replace(' ', '').split('='))
                 .forEach(kv => {
-                    console.log([kv[0], kv[1]])
                     switch(kv[0]) {
                         case "d": defaultd = parseInt(kv[1]); break;
                         case "o": defaulto = parseInt(kv[1]); break;
