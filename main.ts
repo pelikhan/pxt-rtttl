@@ -38,7 +38,7 @@ namespace music {
             const d = i == 0 ? defaultd : parseInt(note.substr(0, i))
             note = note.slice(i)
             // note
-            const thenote = note.substr(0, 1)
+            const thenote = note.substr(0, 1).toUpperCase() == "P" ? "r" : note.substr(0, 1)
             note = note.slice(1)
             // #?
             const hassharp = note.charCodeAt(0) === sharp;
