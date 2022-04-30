@@ -14,7 +14,7 @@ console.log("melody")
 console.log(melody)
 
 control.runInParallel(function() {
-    music.playMelody(melody, 216) // Need to play at double-speed
+    music.playMelody(melody, 112) // Need to play at double-speed
 })
 
 game.splash("play RTTTL tunes", "in your games...")
